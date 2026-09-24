@@ -1,19 +1,226 @@
 <!doctype html>
-<html>
+<html lang="ru">
   <head>
-    <title>Добропожаловать в царство it!</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f1e9">
+    <meta name="description" content="Кирилл Клебанов — системный аналитик и ведущий разработчик. Финтех, мобильная разработка, интеграции и AI.">
+    <meta property="og:title" content="Кирилл Клебанов — системный аналитик и разработчик">
+    <meta property="og:description" content="Соединяю бизнес, аналитику и разработку — от требований до production.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://headmast.github.io/">
+    <title>Кирилл Клебанов — системный аналитик и разработчик</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --paper: #f4f1e9;
+        --ink: #1d2822;
+        --muted: #647068;
+        --line: #d9d7ce;
+        --accent: #bd4b32;
+        --green: #dce7c2;
+        --serif: Georgia, "Times New Roman", serif;
+        --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); }
+      a { color: inherit; }
+      a:focus-visible { outline: 3px solid var(--accent); outline-offset: 5px; }
+      .page { width: min(1120px, calc(100% - 48px)); margin: 0 auto; }
+      .topbar { min-height: 76px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); font-size: 12px; letter-spacing: .11em; text-transform: uppercase; }
+      .wordmark { font-weight: 800; letter-spacing: .02em; text-decoration: none; }
+      .topbar nav { display: flex; gap: 28px; }
+      .topbar nav a { text-decoration: none; }
+      .topbar nav a:hover, .text-link:hover { color: var(--accent); }
+      .availability { color: var(--muted); letter-spacing: .04em; }
+      .availability::before { content: ""; display: inline-block; width: 7px; height: 7px; margin: 0 8px 1px 0; border-radius: 50%; background: #719453; }
+      .hero { display: grid; grid-template-columns: 1fr 330px; gap: 9%; align-items: center; min-height: 640px; padding: 72px 0 82px; border-bottom: 1px solid var(--line); }
+      .eyebrow, .section-label { color: var(--accent); font-size: 11px; font-weight: 750; letter-spacing: .18em; text-transform: uppercase; }
+      h1 { margin: 38px 0 28px; font: 400 clamp(64px, 9vw, 112px)/.88 var(--serif); letter-spacing: -.075em; }
+      h1 span { display: block; color: var(--accent); font-style: italic; }
+      .intro { max-width: 610px; margin: 0; color: #4f5c54; font: 20px/1.6 var(--serif); }
+      .actions { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; margin-top: 34px; }
+      .button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; padding: 0 18px; border: 1px solid var(--ink); border-radius: 3px; background: var(--ink); color: var(--paper); font-size: 13px; font-weight: 700; text-decoration: none; transition: transform .18s ease, background .18s ease; }
+      .button:hover { transform: translateY(-2px); background: #314238; }
+      .text-link { font-size: 13px; font-weight: 700; text-underline-offset: 4px; }
+      .profile-art { position: relative; display: flex; min-height: 410px; flex-direction: column; justify-content: space-between; overflow: hidden; padding: 25px; background: #151715; }
+      .portrait { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 15%; filter: grayscale(1); }
+      .profile-art::before, .profile-art::after { position: absolute; z-index: 1; content: ""; border: 1px solid rgba(255,255,255,.28); border-radius: 50%; }
+      .profile-art::before { width: 295px; height: 295px; top: 63px; left: 26px; }
+      .profile-art::after { width: 205px; height: 205px; top: 108px; left: 71px; }
+      .art-top, .art-bottom { position: relative; z-index: 2; display: flex; justify-content: space-between; color: white; font-size: 10px; font-weight: 750; letter-spacing: .13em; text-transform: uppercase; text-shadow: 0 1px 8px rgba(0,0,0,.75); }
+      .art-bottom { align-items: end; }
+      .art-years { color: white; font: 400 28px/1 var(--serif); letter-spacing: -.05em; }
+      .section { padding: 76px 0; border-bottom: 1px solid var(--line); }
+      .section-heading { display: grid; grid-template-columns: 200px 1fr; gap: 8%; align-items: start; }
+      h2 { max-width: 780px; margin: -9px 0 0; font: 400 clamp(34px, 5vw, 57px)/1.06 var(--serif); letter-spacing: -.05em; }
+      .facts { display: grid; grid-template-columns: repeat(3, 1fr); margin: 54px 0 0 24%; }
+      .fact { padding: 0 18px; border-left: 1px solid var(--line); }
+      .fact:first-child { padding-left: 0; border-left: 0; }
+      .fact strong { display: block; margin-bottom: 8px; font: 400 40px/1 var(--serif); }
+      .fact span { color: var(--muted); font-size: 12px; }
+      .experience { margin: 52px 0 0 24%; }
+      .role { display: grid; grid-template-columns: 140px 210px 1fr; gap: 22px; padding: 22px 0; border-top: 1px solid var(--line); }
+      .role:last-child { border-bottom: 1px solid var(--line); }
+      .role time { color: var(--muted); font-size: 12px; }
+      .role h3 { margin: 0; font-size: 14px; line-height: 1.4; }
+      .role p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+      .project-copy { max-width: 690px; margin: 30px 0 0 24%; color: #4f5c54; font: 17px/1.7 var(--serif); }
+      .project-links { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0 0 24%; }
+      .project-links .button { min-height: 44px; }
+      .project-links .button.secondary { background: transparent; color: var(--ink); }
+      .project-links .button.secondary:hover { background: var(--green); }
+      .social-pill { display: inline-flex; min-height: 50px; align-items: center; gap: 11px; padding: 0 19px; border: 1px solid var(--line); border-radius: 12px; background: var(--green); color: var(--ink); font-size: 13px; font-weight: 750; text-decoration: none; transition: transform .18s ease, background .18s ease; }
+      .social-pill:hover { transform: translateY(-1px); background: #e7e8d8; }
+      .social-pill.telegram, .social-pill.max { background: var(--green); }
+      .social-pill.telegram:hover, .social-pill.max:hover { background: #e7e8d8; }
+      .social-pill svg { width: 22px; height: 22px; flex: 0 0 22px; fill: var(--accent); }
+      .contact { display: flex; align-items: end; justify-content: space-between; gap: 24px; padding: 76px 0; }
+      .contact h2 { font-size: clamp(38px, 6vw, 68px); }
+      .contact-links { display: grid; justify-items: end; gap: 12px; }
+      .contact-links a { font-size: 15px; text-underline-offset: 4px; }
+      footer { display: flex; justify-content: space-between; gap: 20px; padding: 20px 0 28px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+      .counter-wrap { display: inline-flex; align-items: center; gap: 5px; }
+      .counterapi { display: inline-block; min-height: 16px; color: var(--muted); font: inherit; }
+      .counter-credit { text-decoration: none; }
+      @media (max-width: 760px) {
+        .page { width: min(560px, calc(100% - 36px)); }
+        .topbar { min-height: 64px; }
+        .topbar nav { display: none; }
+        .hero { grid-template-columns: 1fr; gap: 44px; min-height: 0; padding: 64px 0; }
+        h1 { margin: 30px 0 22px; font-size: clamp(66px, 17vw, 98px); }
+        .intro { font-size: 18px; }
+        .profile-art { width: min(100%, 360px); min-height: 350px; justify-self: center; }
+        .profile-art::before { width: 270px; height: 270px; top: 43px; left: calc(50% - 135px); }
+        .profile-art::after { width: 190px; height: 190px; top: 83px; left: calc(50% - 95px); }
+        .section { padding: 58px 0; }
+        .section-heading { grid-template-columns: 1fr; gap: 23px; }
+        .facts, .experience, .project-copy, .project-links { margin: 40px 0 0; }
+        .fact { padding: 0 12px; }
+        .fact strong { font-size: 32px; }
+        .role { grid-template-columns: 1fr; gap: 7px; padding: 19px 0; }
+        .role h3 { font-size: 15px; }
+        .role p { max-width: 540px; }
+        .contact { align-items: start; flex-direction: column; padding: 58px 0; }
+        .contact-links { justify-items: start; }
+      }
+      @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; } }
+    </style>
   </head>
-  <body bgcolor="#F0F050">
-    <h1>
-      <center>
-      <br>
-      <p>Спасибо за внимание!</p>
-      <p>Я Кирилл Клебанов, разработчик из славного Воронежа</p>
-      <br>
-      <p><a href="https://forms.gle/sKVLvLjgNKMTkz8LA">Помоги мне стать лучше - опрос</a></p>
-      <p>QR-благотворительности</p>
-      <p><img src="QR.png" alt="QR-благотворительности" class="inline"/></p>
-      </center>
-    </h1>
+  <body>
+    <div class="page">
+      <header class="topbar">
+        <a class="wordmark" href="#top">Кирилл Клебанов</a>
+        <nav aria-label="Основная навигация">
+          <a href="#about">Обо мне</a>
+          <a href="#experience">Опыт</a>
+          <a href="#project">Проект</a>
+          <a href="#contact">Контакты</a>
+        </nav>
+        <span class="availability">На связи</span>
+      </header>
+
+      <main>
+        <section class="hero" id="top" aria-labelledby="title">
+          <div>
+            <span class="eyebrow">Системный аналитик · ведущий разработчик</span>
+            <h1 id="title">Сложное<span>делаю простым.</span></h1>
+            <p class="intro">Соединяю бизнес, аналитику и разработку: превращаю требования в решения, которые команда может уверенно довести до production.</p>
+            <div class="actions">
+              <a class="social-pill telegram" href="https://t.me/hdmast" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.4 3.2 19 20.1c-.25 1.2-.95 1.5-1.95.95l-5.4-4-2.6 2.5c-.28.28-.53.53-1.08.53l.39-5.5L18.4 6.3c.4-.36-.08-.56-.62-.2L6.54 13.2l-5.2-1.63c-1.13-.35-1.15-1.13.24-1.68L21.9 2.44c.94-.35 1.76.23 1.5.76Z"/></svg>
+                <span>Написать в Telegram</span>
+              </a>
+              <a class="text-link" href="#project">Мой проект ↓</a>
+            </div>
+          </div>
+          <aside class="profile-art" aria-label="Кирилл Клебанов, 15 лет в разработке">
+            <img class="portrait" src="portrait.jpg" width="640" height="960" alt="Кирилл Клебанов">
+            <div class="art-top"><span>Профиль / 01</span><span>RU</span></div>
+            <div class="art-bottom"><span>Аналитика<br>и инженерия</span><span class="art-years">15+</span></div>
+          </aside>
+        </section>
+
+        <section class="section" id="about" aria-labelledby="about-title">
+          <div class="section-heading">
+            <span class="section-label">01 / профиль</span>
+            <h2 id="about-title">От требований и пользовательских сценариев до архитектуры и production.</h2>
+          </div>
+          <div class="facts" aria-label="Ключевые факты">
+            <div class="fact"><strong>15+</strong><span>лет в разработке ПО</span></div>
+            <div class="fact"><strong>3</strong><span>года в ролях SA / Lead</span></div>
+            <div class="fact"><strong>25+</strong><span>опубликованных приложений</span></div>
+          </div>
+        </section>
+
+        <section class="section" id="experience" aria-labelledby="experience-title">
+          <div class="section-heading">
+            <span class="section-label">02 / опыт</span>
+            <h2 id="experience-title">Финтех, мобильные продукты, интеграции и аналитика.</h2>
+          </div>
+          <div class="experience">
+            <article class="role">
+              <time>1 год · NDA</time>
+              <h3>KMP Mobile / AI Developer</h3>
+              <p>Кроссплатформенная разработка, модели данных, API-интеграции, тестирование и автоматизация мобильных систем.</p>
+            </article>
+            <article class="role">
+              <time>3 года · Una.Financial</time>
+              <h3>Lead Developer / System Analyst</h3>
+              <p>Требования, BPMN и UML, финансовые продукты для международных рынков, взаимодействие product, backend, mobile, design и QA.</p>
+            </article>
+            <article class="role">
+              <time>4 года · Just / Bumpin</time>
+              <h3>BI Analyst / Mobile Developer</h3>
+              <p>Продуктовые метрики, A/B-тесты и разработка SDK UserX для UX-аналитики.</p>
+            </article>
+            <article class="role">
+              <time>7 лет · Surf и другие</time>
+              <h3>Разработчик мобильных продуктов</h3>
+              <p>Продукты для банков, e-commerce, агротеха, медицины и enterprise.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="project" aria-labelledby="project-title">
+          <div class="section-heading">
+            <span class="section-label">03 / свой проект</span>
+            <h2 id="project-title">Бензин тут Воронеж</h2>
+          </div>
+          <p class="project-copy">Информационный сервис для автомобилистов Воронежа: цены на топливо, новости АЗС и акции в одном месте. Редактор обновляет цены с указанием источника и времени проверки. Telegram- и MAX-боты помогают следить за новостями и настраивать уведомления.</p>
+          <div class="project-links">
+            <a class="social-pill telegram" href="https://t.me/benz_tut_vrn" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.4 3.2 19 20.1c-.25 1.2-.95 1.5-1.95.95l-5.4-4-2.6 2.5c-.28.28-.53.53-1.08.53l.39-5.5L18.4 6.3c.4-.36-.08-.56-.62-.2L6.54 13.2l-5.2-1.63c-1.13-.35-1.15-1.13.24-1.68L21.9 2.44c.94-.35 1.76.23 1.5.76Z"/></svg>
+              <span>Telegram проекта</span>
+            </a>
+            <a class="social-pill max" href="https://max.ru/channel_benz_tut_vrn" target="_blank" rel="noopener noreferrer" aria-label="Канал Бензин тут Воронеж в MAX">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5c-5.25 0-9.5 3.77-9.5 8.42 0 2.15.92 4.02 2.42 5.54l-.63 4.08a.75.75 0 0 0 1.1.77l4.02-2.1c.83.2 1.7.3 2.59.3 5.25 0 9.5-3.78 9.5-8.43S17.25 2.5 12 2.5Zm-4.5 5.7h1.85l2.14 3.12 2.13-3.12h1.87v6.1h-1.82v-3.35l-2.18 3.06-2.18-3.06v3.35H7.5V8.2Z"/></svg>
+              <span>Канал в MAX</span>
+            </a>
+            <a class="social-pill telegram" href="https://t.me/hdmast" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.4 3.2 19 20.1c-.25 1.2-.95 1.5-1.95.95l-5.4-4-2.6 2.5c-.28.28-.53.53-1.08.53l.39-5.5L18.4 6.3c.4-.36-.08-.56-.62-.2L6.54 13.2l-5.2-1.63c-1.13-.35-1.15-1.13.24-1.68L21.9 2.44c.94-.35 1.76.23 1.5.76Z"/></svg>
+              <span>Связаться с автором</span>
+            </a>
+          </div>
+        </section>
+
+        <section class="contact" id="contact" aria-labelledby="contact-title">
+          <h2 id="contact-title">Есть интересная<br>задача?</h2>
+          <div class="contact-links">
+            <a class="social-pill telegram" href="https://t.me/hdmast" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.4 3.2 19 20.1c-.25 1.2-.95 1.5-1.95.95l-5.4-4-2.6 2.5c-.28.28-.53.53-1.08.53l.39-5.5L18.4 6.3c.4-.36-.08-.56-.62-.2L6.54 13.2l-5.2-1.63c-1.13-.35-1.15-1.13.24-1.68L21.9 2.44c.94-.35 1.76.23 1.5.76Z"/></svg>
+              <span>Написать в Telegram</span>
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <span>© Кирилл Клебанов</span>
+        <span class="counter-wrap">Посещений: <span class="counterapi" ns="headmast.github.io" action="view" key="homepage" noIcon="true" noCss="true" noLink="true" label=""></span><a class="counter-credit" href="https://counterapi.com/" target="_blank" rel="noopener noreferrer" aria-label="Счётчик CounterAPI">· счётчик</a></span>
+      </footer>
+    </div>
+    <script async src="https://counterapi.com/c.js"></script>
   </body>
 </html>
